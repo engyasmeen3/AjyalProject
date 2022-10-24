@@ -24,7 +24,7 @@ use App\Http\Controllers\API\UserController;
 |
 */
 
-Route::group(function () {
+Route::group([], function () {
     Route::apiResource('attendances', AttendanceController::class);
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('contracts', ContractController::class);
