@@ -2,6 +2,16 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AttendanceController;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\ContractController;
+use App\Http\Controllers\API\CourseController;
+use App\Http\Controllers\API\PlatformController;
+use App\Http\Controllers\API\ProjectController;
+use App\Http\Controllers\API\PostController;
+use App\Http\Controllers\API\StudentController;
+use App\Http\Controllers\API\TrainerController;
+use App\Http\Controllers\API\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +25,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    // return $request->user();
+    Route::apiResource('attendances', AttendanceController::class);
+    Route::apiResource('categories', CategoryController::class);
+    Route::apiResource('contracts', ContractController::class);
+    Route::apiResource('courses', CourseController::class);
+    Route::apiResource('platforms', PlatformController::class);
+    Route::apiResource('posts', PostController::class);
+    Route::apiResource('projects', ProjectController::class);
+    Route::apiResource('students', StudentController::class);
+    Route::apiResource('trainers', TrainerController::class);
+    Route::apiResource('users', UserController::class);
 });

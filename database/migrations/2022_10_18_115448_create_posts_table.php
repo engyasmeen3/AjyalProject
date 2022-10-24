@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('url');
             $table->string('image');
-            
+            $table->enum('status', ['active', 'archived']);
+
             $table->timestamps();
         });
     }

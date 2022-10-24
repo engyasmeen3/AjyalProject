@@ -19,7 +19,9 @@ return new class extends Migration
             $table->double('amount');
             $table->string('description');
             $table->string('contract_image');
-
+            $table->time('period');
+            $table->enum('status', ['active', 'inactive']);
+            
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');
             $table->unsignedBigInteger('group_id');

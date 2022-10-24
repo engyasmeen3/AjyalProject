@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('platform_id')->references('id')->on('platforms');
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');
+            // profile url
+            $table->string('url');
             $table->timestamps();
         });
     }

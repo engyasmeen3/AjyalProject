@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->foreignId('user_id')->primary()->constrained('users', 'id');
+            $table->id();
+            // $table->foreignId('user_id')->primary()->constrained('users', 'id');
             $table->string('ar_fname');
             $table->string('ar_mname');
             $table->string('ar_family');
@@ -26,8 +27,8 @@ return new class extends Migration
             $table->string('mobile');
             $table->string('specialization');
             $table->string('country');
-            
-
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
