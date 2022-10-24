@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class platform_student extends Model
 {
     use HasFactory;
+    protected $guarded = ['*'];
 }

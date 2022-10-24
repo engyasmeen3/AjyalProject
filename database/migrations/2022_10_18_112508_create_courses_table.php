@@ -28,9 +28,9 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('trainer_id');
             $table->foreign('trainer_id')->references('id')->on('trainers');
-            $table->unsignedBigInteger('level_id');
-            $table->foreign('level_id')->references('id')->on('levels');
-            $table->unsignedBigInteger('group_id');
+            // $table->unsignedBigInteger('level_id');
+            // $table->foreign('level_id')->references('id')->on('levels');
+             $table->unsignedBigInteger('group_id');
             $table->foreign('group_id')->references('id')->on('groups');
 
             $table->timestamps();
