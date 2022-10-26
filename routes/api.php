@@ -25,9 +25,9 @@ use App\Http\Controllers\API\V1\UserController;
 */
 
 Route::group([], function () {
-    Route::post('login', AuthController::class);
+    // Route::post('login', AuthController::class);
     Route::apiResource('attendances', AttendanceController::class);
-    
+
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('contracts', ContractController::class);
     Route::apiResource('courses', CourseController::class);
