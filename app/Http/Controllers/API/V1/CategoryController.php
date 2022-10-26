@@ -25,11 +25,12 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
+    {  
+        //$categories = Category::filter($request->query())->paginate();
+        // return CategoryResource::collection($categories);
         
-        $categories = Category::filter($request->query())->paginate();
-
-        return CategoryResource::collection($categories);
+        $categories = Category::all();
+        return $categories;
     }
 
     /**

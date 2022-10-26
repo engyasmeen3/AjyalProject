@@ -2,16 +2,16 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\AttendanceController;
-use App\Http\Controllers\API\CategoryController;
-use App\Http\Controllers\API\ContractController;
+use App\Http\Controllers\API\V1\AttendanceController;
+use App\Http\Controllers\API\V1\CategoryController;
+use App\Http\Controllers\API\V1\ContractController;
 use App\Http\Controllers\API\CourseController;
-use App\Http\Controllers\API\PlatformController;
-use App\Http\Controllers\API\ProjectController;
-use App\Http\Controllers\API\PostController;
-use App\Http\Controllers\API\StudentController;
-use App\Http\Controllers\API\TrainerController;
-use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\V1\PlatformController;
+use App\Http\Controllers\API\V1\ProjectController;
+use App\Http\Controllers\API\V1\PostController;
+use App\Http\Controllers\API\V1\StudentController;
+use App\Http\Controllers\API\V1\TrainerController;
+use App\Http\Controllers\API\V1\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,9 @@ use App\Http\Controllers\API\UserController;
 */
 
 Route::group([], function () {
+    Route::post('login', AuthController::class);
     Route::apiResource('attendances', AttendanceController::class);
+    
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('contracts', ContractController::class);
     Route::apiResource('courses', CourseController::class);
