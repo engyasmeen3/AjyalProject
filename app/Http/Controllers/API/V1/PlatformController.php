@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class PlatformController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:sanctum')->except('index', 'show');
+      //  $this->middleware('auth:sanctum')->except('index', 'show');
     }
     
     /**
@@ -26,9 +26,11 @@ class PlatformController extends Controller
     public function index(Request $request)
     {
         
-        $platform = Platform::filter($request->query())->paginate();
+        // $platform = Platform::filter($request->query())->paginate();
 
-        return PlatformResource::collection($platform);
+        // return PlatformResource::collection($platform);
+        return PlatformResource::collection(Platform::all());
+
     }
 
     /**

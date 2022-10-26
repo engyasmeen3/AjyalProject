@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Project;
-use App\Http\ProjectResource;
+use App\Http\Resources\projectResource;
 use App\Http\Controllers\Api\AccessTokensController;
 
 
@@ -16,7 +16,7 @@ class ProjectController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:sanctum')->except('index', 'show');
+        //$this->middleware('auth:sanctum')->except('index', 'show');
     }
     
     /**
@@ -27,9 +27,11 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         
-        $projects = project::filter($request->query())->paginate();
+        // $projects = project::filter($request->query())->paginate();
 
-        return projectResource::collection($projects);
+        // return projectResource::collection($projects);
+        return projectResource::collection(Project::all());
+
     }
 
     /**
@@ -47,9 +49,9 @@ class ProjectController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('projects.create')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('projects.create')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $project = Project::create($request->all());
 

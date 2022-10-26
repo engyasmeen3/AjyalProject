@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -26,11 +26,13 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         
-        $course = Course::filter($request->query())
-            ->with('courses:id,previous', 'categories:id,name', 'trainers:id,name', 'groups:id,name')
-            ->paginate();
+        // $courses = Course::filter($request->query())
+        //     ->with('categories:id,name', 'trainers:id,name', 'groups:id,name')
+        //     ->paginate();
 
-        return CourseResource::collection($contract);
+        // return CourseResource::collection($courses);
+        return CourseResource::collection(Course::all());
+
     }
 
     /**

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AccessTokensController;
 use App\Models\User;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,7 @@ class UserController extends Controller
  
     public function __construct()
     {
-        $this->middleware('auth:sanctum')->except('index', 'show');
+      //  $this->middleware('auth:sanctum')->except('index', 'show');
     }
     
     /**
@@ -25,9 +26,11 @@ class UserController extends Controller
     public function index(Request $request)
     {
         
-        $users = User::filter($request->query())->paginate();
+        // $users = User::filter($request->query())->paginate();
 
-        return UserResource::collection($users);
+        // return UserResource::collection($users);
+        return UserResource::collection(User::all());
+
     }
 
     /**
