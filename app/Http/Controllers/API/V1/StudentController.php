@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Student;
-use App\Http\StudentResource;
+use App\Http\Resources\StudentResource;
 use App\Http\Controllers\Api\AccessTokensController;
 
 class StudentController extends Controller
@@ -15,7 +15,7 @@ class StudentController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:sanctum')->except('index', 'show');
+      //  $this->middleware('auth:sanctum')->except('index', 'show');
     }
     
     /**
@@ -26,9 +26,10 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         
-        $students = Student::filter($request->query())->paginate();
+        // $students = Student::filter($request->query())->paginate();
+        // return StudentResource::collection($students);
+        return StudentResource::collection(Student::all());
 
-        return StudentResource::collection($students);
     }
 
     /**

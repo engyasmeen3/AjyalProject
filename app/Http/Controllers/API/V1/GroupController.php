@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -26,9 +26,10 @@ class GroupController extends Controller
     public function index(Request $request)
     {
         
-        $group = Group::filter($request->query())->paginate();
+        // $groups = Group::filter($request->query())->paginate();
+        // return GroupResource::collection($groups);
+        return GroupResource::collection(Group::all());
 
-        return GroupResource::collection($group);
     }
 
     /**

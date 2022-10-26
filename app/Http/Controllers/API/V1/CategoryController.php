@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -29,8 +29,10 @@ class CategoryController extends Controller
         //$categories = Category::filter($request->query())->paginate();
         // return CategoryResource::collection($categories);
         
-        $categories = Category::all();
-        return $categories;
+        // $categories = Category::all();
+        // return $categories;
+        return CategoryResource::collection(Category::all());
+
     }
 
     /**

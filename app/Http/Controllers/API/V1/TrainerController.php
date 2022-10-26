@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\AccessTokensController;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Trainer;
+use App\Http\Resources\TrainerResource;
 
 
 class TrainerController extends Controller
@@ -25,9 +26,10 @@ class TrainerController extends Controller
     public function index(Request $request)
     {
         
-        $trainers = Trainer::filter($request->query())->paginate();
+        // $trainers = Trainer::filter($request->query())->paginate();
+        // return TrainerResource::collection($trainers);
+        return TrainerResource::collection(Trainer::all());
 
-        return TrainerResource::collection($trainers);
     }
 
     /**
