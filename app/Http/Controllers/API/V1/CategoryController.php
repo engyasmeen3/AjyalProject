@@ -55,9 +55,9 @@ class CategoryController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('categories.create')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('categories.create')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $category = Category::create($request->all());
 
@@ -101,9 +101,9 @@ class CategoryController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('categories.update')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('categories.update')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $category->update($request->all());
 
@@ -120,11 +120,11 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $user = Auth::guard('sanctum')->user();
-        if (!$user->tokenCan('categories.delete')) {
-            return response([
-                'message' => 'Not allowed'
-            ], 403);
-        }
+        // if (!$user->tokenCan('categories.delete')) {
+        //     return response([
+        //         'message' => 'Not allowed'
+        //     ], 403);
+        // }
 
         Category::destroy($id);
         return [

@@ -53,9 +53,9 @@ class PostController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('posts.create')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('posts.create')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $post = Post::create($request->all());
 
@@ -97,9 +97,9 @@ class PostController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('posts.update')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('posts.update')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $post->update($request->all());
 
@@ -116,11 +116,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $user = Auth::guard('sanctum')->user();
-        if (!$user->tokenCan('posts.delete')) {
-            return response([
-                'message' => 'Not allowed'
-            ], 403);
-        }
+        // if (!$user->tokenCan('posts.delete')) {
+        //     return response([
+        //         'message' => 'Not allowed'
+        //     ], 403);
+        // }
 
         Post::destroy($id);
         return [

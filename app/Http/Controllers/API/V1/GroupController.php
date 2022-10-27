@@ -45,9 +45,9 @@ class GroupController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('groups.create')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('groups.create')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $group = Group::create($request->all());
 
@@ -86,9 +86,9 @@ class GroupController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('groups.update')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('groups.update')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $group->update($request->all());
 
@@ -105,11 +105,11 @@ class GroupController extends Controller
     public function destroy($id)
     {
         $user = Auth::guard('sanctum')->user();
-        if (!$user->tokenCan('groups.delete')) {
-            return response([
-                'message' => 'Not allowed'
-            ], 403);
-        }
+        // if (!$user->tokenCan('groups.delete')) {
+        //     return response([
+        //         'message' => 'Not allowed'
+        //     ], 403);
+        // }
 
         Group::destroy($id);
         return [

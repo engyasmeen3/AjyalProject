@@ -4,14 +4,14 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Attendance;
-use App\Http\Resources\AttendanceResource;
+use App\Models\Contact;
+use App\Http\Resources\ContactResource;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Api\AccessTokensController;
 
 
-class AttendanceController extends Controller
+class ContactController extends Controller
 {
 
     
@@ -28,11 +28,9 @@ class AttendanceController extends Controller
         public function index(Request $request)
         {
             
-            // $attendance = Attendance::filter($request->query())->paginate();
-            // return AttendanceResource::collection($attendance);
-
-            return CategoryResource::collection(Category::all());
-
+            // $contact = Contact::filter($request->query())->paginate();
+    
+            // return ContactResource::collection($contact);
         }
     
         /**
@@ -44,19 +42,21 @@ class AttendanceController extends Controller
         public function store(Request $request)
         {
             $request->validate([
-                'date'            => 'required|date',
-                'course_id'       => 'required|exists:courses,id',
+                'name'              => 'required|string|max:255',
+                'email'             => 'required|email',
+                'mobile'            => 'required',
+                'body'              => 'required'
             ]);
     
             $user = $request->user();
-            // if (!$user->tokenCan('attendances.create')) {
+            // if (!$user->tokenCan('contacts.create')) {
             //     abort(403, 'Not allowed');
             // }
     
-            $attendance = Attendance::create($request->all());
+            $contact = Contact::create($request->all());
     
-            return Response::json($attendance, 201, [
-                'Location' => route('attendances.show', $attendance->id),
+            return Response::json($contact, 201, [
+                'Location' => route('contacts.show', $contact->id),
             ]);
         }
     
@@ -66,11 +66,11 @@ class AttendanceController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function show(Attendance $attendance)
+        public function show(Contact $contact)
         {
-            return new AttendanceResource($attendance);
+            return new ContactResource($contact);
     
-            return $attendance;
+            return $contact;
             }
     
         /**
@@ -80,23 +80,25 @@ class AttendanceController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, Attendance $attendance)
+        public function update(Request $request, Contact $contact)
         {
             $request->validate([
-                'date'            => 'required|date',
-                'course_id'       => 'required|exists:courses,id',
+                'name'              => 'required|string|max:255',
+                'description'       => 'required',
+                'Contact'            => 'required',
+                'letter'            => 'required'
 
             ]);
     
             $user = $request->user();
-            // if (!$user->tokenCan('attendances.update')) {
+            // if (!$user->tokenCan('contacts.update')) {
             //     abort(403, 'Not allowed');
             // }
     
-            $attendance->update($request->all());
+            $contact->update($request->all());
     
     
-            return Response::json($attendance);
+            return Response::json($contact);
         }
     
         /**
@@ -108,15 +110,15 @@ class AttendanceController extends Controller
         public function destroy($id)
         {
             $user = Auth::guard('sanctum')->user();
-            // if (!$user->tokenCan('attendances.delete')) {
+            // if (!$user->tokenCan('contacts.delete')) {
             //     return response([
             //         'message' => 'Not allowed'
             //     ], 403);
             // }
     
-            Attendance::destroy($id);
+            Contact::destroy($id);
             return [
-                'message' => 'attendance deleted successfully',
+                'message' => 'Contact deleted successfully',
             ];
         }
     }

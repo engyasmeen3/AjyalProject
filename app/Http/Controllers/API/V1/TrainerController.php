@@ -58,9 +58,9 @@ class TrainerController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('trainers.create')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('trainers.create')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $trainer = Trainer::create($request->all());
 
@@ -110,9 +110,9 @@ class TrainerController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('trainers.update')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('trainers.update')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $trainer->update($request->all());
 
@@ -129,11 +129,11 @@ class TrainerController extends Controller
     public function destroy($id)
     {
         $user = Auth::guard('sanctum')->user();
-        if (!$user->tokenCan('trainers.delete')) {
-            return response([
-                'message' => 'Not allowed'
-            ], 403);
-        }
+        // if (!$user->tokenCan('trainers.delete')) {
+        //     return response([
+        //         'message' => 'Not allowed'
+        //     ], 403);
+        // }
 
         Trainer::destroy($id);
         return [

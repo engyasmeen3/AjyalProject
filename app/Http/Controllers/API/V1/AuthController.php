@@ -20,11 +20,11 @@ class AuthController extends Controller
             'abilities' => 'nullable|array'
         ]);
 
-        $user = User::where('username', $request->username)->first();
+        $user = User::where('email', $request->username)->first();
         if ($user && Hash::check($request->password, $user->password)) {
             
             $device_name =  $request->userAgent();
-            $token = $user->createToken($device_name, $request->post('abilities'));
+            $token = $user->createToken($device_name, $request->post('abilities', ['*']));
 
             return Response::json([
                 'code' => 1,

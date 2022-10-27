@@ -16,7 +16,7 @@ class ProjectController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth:sanctum')->except('index', 'show');
+        // $this->middleware('auth:sanctum')->except('index', 'show');
     }
     
     /**
@@ -90,9 +90,9 @@ class ProjectController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('projects.update')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('projects.update')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $project->update($request->all());
         return Response::json($project);
@@ -107,11 +107,11 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $user = Auth::guard('sanctum')->user();
-        if (!$user->tokenCan('projects.delete')) {
-            return response([
-                'message' => 'Not allowed'
-            ], 403);
-        }
+        // if (!$user->tokenCan('projects.delete')) {
+        //     return response([
+        //         'message' => 'Not allowed'
+        //     ], 403);
+        // }
 
         Project::destroy($id);
         return [

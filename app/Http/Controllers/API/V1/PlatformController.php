@@ -46,9 +46,9 @@ class PlatformController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('platforms.create')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('platforms.create')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $platform = Platform::create($request->all());
 
@@ -88,9 +88,9 @@ class PlatformController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('platforms.update')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('platforms.update')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $platform->update($request->all());
 
@@ -107,11 +107,11 @@ class PlatformController extends Controller
     public function destroy($id)
     {
         $user = Auth::guard('sanctum')->user();
-        if (!$user->tokenCan('platforms.delete')) {
-            return response([
-                'message' => 'Not allowed'
-            ], 403);
-        }
+        // if (!$user->tokenCan('platforms.delete')) {
+        //     return response([
+        //         'message' => 'Not allowed'
+        //     ], 403);
+        // }
 
         platform::destroy($id);
         return [
