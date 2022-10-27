@@ -15,6 +15,8 @@ use App\Http\Controllers\API\V1\TrainerController;
 use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\V1\VisionController;
 use App\Http\Controllers\API\V1\GroupController;
+use App\Http\Controllers\API\V1\ContactController;
+
 
 
 /*
@@ -41,7 +43,7 @@ Route::group([], function () {
     Route::apiResource('trainers', TrainerController::class);
     Route::apiResource('users', UserController::class);
     Route::apiResource('visions', VisionController::class);
-    Route::apiResource('contacts', AttendanceController::class);
+    Route::apiResource('contacts', ContactController::class);
     Route::apiResource('groups', GroupController::class);
 
 });
