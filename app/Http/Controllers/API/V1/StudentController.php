@@ -58,9 +58,9 @@ class StudentController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('students.create')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('students.create')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $student = Student::create($request->all());
 
@@ -110,9 +110,9 @@ class StudentController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('students.update')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('students.update')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $student->update($request->all());
 
@@ -129,11 +129,11 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $user = Auth::guard('sanctum')->user();
-        if (!$user->tokenCan('students.delete')) {
-            return response([
-                'message' => 'Not allowed'
-            ], 403);
-        }
+        // if (!$user->tokenCan('students.delete')) {
+        //     return response([
+        //         'message' => 'Not allowed'
+        //     ], 403);
+        // }
 
         Student::destroy($id);
         return [

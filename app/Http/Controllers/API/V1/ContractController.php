@@ -56,9 +56,9 @@ class ContractController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('contracts.create')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('contracts.create')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $contract = Contract::create($request->all());
 
@@ -105,9 +105,9 @@ class ContractController extends Controller
         ]);
 
         $user = $request->user();
-        if (!$user->tokenCan('contracts.update')) {
-            abort(403, 'Not allowed');
-        }
+        // if (!$user->tokenCan('contracts.update')) {
+        //     abort(403, 'Not allowed');
+        // }
 
         $contract->update($request->all());
 
@@ -124,11 +124,11 @@ class ContractController extends Controller
     public function destroy($id)
     {
         $user = Auth::guard('sanctum')->user();
-        if (!$user->tokenCan('contracts.delete')) {
-            return response([
-                'message' => 'Not allowed'
-            ], 403);
-        }
+        // if (!$user->tokenCan('contracts.delete')) {
+        //     return response([
+        //         'message' => 'Not allowed'
+        //     ], 403);
+        // }
 
         Contract::destroy($id);
         return [
