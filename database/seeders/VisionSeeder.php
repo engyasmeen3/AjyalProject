@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
-   
+use App\Models\Vision;
+
 class VisionSeeder extends Seeder
 {
     /**
@@ -14,7 +14,7 @@ class VisionSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        Vision::create([
             'name' => 'أجيال',
             'email' => 'Ajyal@gmail.com',
             'vision' => 'تسعى أجيال إلى بلورة مفاهيم العمل المجتمعي وفقا لرؤية تتلاءم واحتياجات المجتمع، والى نشر الوعي والإدراك لدي الفئات المستهدفة للمساهمة في عملية التنمية الحقيقية ولتعزيز وتطوير قدرات المجتمع.',
