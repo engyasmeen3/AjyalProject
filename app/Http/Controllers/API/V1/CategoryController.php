@@ -47,7 +47,8 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
-            'parent_id' => 'required|exists:categories,id',
+            'parent_id' =>'sometimes|nullable',
+            //'parent_id' => 'required|exists:categories,id',
             'status' => 'in:active,inactive',
             'is_parent' => 'in:true,false',
             'slug' => 'required|string|min:0',

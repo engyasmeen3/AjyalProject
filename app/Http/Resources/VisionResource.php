@@ -16,13 +16,14 @@ class VisionResource extends JsonResource
     {
 
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'vision' => $this->vision,
-            'letter' => $this->letter,
+            'id'          => $this->id,
+            'name'        => $this->name,
+            'vision'      => $this->vision,
+            'letter'      => $this->letter,
             'description' => $this->description,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'email'       =>$this->email,
+            'created_at'  => $this->created_at,
+            'updated_at'  => $this->updated_at,
         ];
     }
 }
