@@ -13,6 +13,7 @@ use App\Http\Controllers\API\V1\PostController;
 use App\Http\Controllers\API\V1\StudentController;
 use App\Http\Controllers\API\V1\TrainerController;
 use App\Http\Controllers\API\V1\UserController;
+use App\Http\Controllers\API\V1\VisionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::group([], function () {
     Route::apiResource('students', StudentController::class);
     Route::apiResource('trainers', TrainerController::class);
     Route::apiResource('users', UserController::class);
-    Route::apiResource('visions', AttendanceController::class);
+    Route::apiResource('visions', VisionController::class);
     Route::apiResource('contacts', AttendanceController::class);
 
 });
