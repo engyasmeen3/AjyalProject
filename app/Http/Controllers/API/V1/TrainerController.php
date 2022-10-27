@@ -103,7 +103,6 @@ class TrainerController extends Controller
             'card_id' => 'required|string|digits:9',
             'dob' => 'required|date',
             'mobile' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id',
             'specialization' => 'required|string|min:0',
             'country' => 'required|string',
             'user_id' => 'required|exists:users,id',
