@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('vision');
             $table->string('letter');
+            $table->string('address');
+            $table->string('email');
             $table->timestamps();
         });
     }
