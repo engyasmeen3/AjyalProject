@@ -31,6 +31,8 @@ class VisionController extends Controller
             // $vision = Vision::filter($request->query())->paginate();
     
             // return VisionResource::collection($vision);
+            return VisionResource::collection(Vision::all());
+
         }
     
         /**

@@ -27,11 +27,13 @@ class ContractController extends Controller
     public function index(Request $request)
     {
         
-        $contract = Contract::filter($request->query())
-            ->with('students:id,name', 'groups:id,name', 'platforms:id,name')
-            ->paginate();
+        // $contract = Contract::filter($request->query())
+        //     ->with('students:id,name', 'groups:id,name', 'platforms:id,name')
+        //     ->paginate();
 
-        return ContractResource::collection($contract);
+        // return ContractResource::collection($contract);
+        return ContractResource::collection(Contract::all());
+
     }
 
     /**

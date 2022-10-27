@@ -14,6 +14,8 @@ use App\Http\Controllers\API\V1\StudentController;
 use App\Http\Controllers\API\V1\TrainerController;
 use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\V1\VisionController;
+use App\Http\Controllers\API\V1\GroupController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +31,6 @@ use App\Http\Controllers\API\V1\VisionController;
 Route::group([], function () {
     Route::post('login', [AuthController::class, 'store']);
     Route::apiResource('attendances', AttendanceController::class);
-
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('contracts', ContractController::class);
     Route::apiResource('courses', CourseController::class);
@@ -41,5 +42,6 @@ Route::group([], function () {
     Route::apiResource('users', UserController::class);
     Route::apiResource('visions', VisionController::class);
     Route::apiResource('contacts', AttendanceController::class);
+    Route::apiResource('groups', GroupController::class);
 
 });
