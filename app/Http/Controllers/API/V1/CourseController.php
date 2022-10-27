@@ -55,6 +55,7 @@ class CourseController extends Controller
             'short_description'=> 'required|string|max:255',
             'starts_at'        => 'required|date',
             'ends_at'          => 'required|date',
+            'image'            =>  'nullable|image'
             // 'course_code'      => 'required'
         ]);
 
