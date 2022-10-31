@@ -85,14 +85,7 @@ class GroupController extends Controller
 
         ]);
 
-        $user = $request->user();
-        // if (!$user->tokenCan('groups.update')) {
-        //     abort(403, 'Not allowed');
-        // }
-
         $group->update($request->all());
-
-
         return Response::json($group);
     }
 

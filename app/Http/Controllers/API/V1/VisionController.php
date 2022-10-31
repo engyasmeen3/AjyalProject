@@ -82,13 +82,16 @@ class VisionController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, Vision $vision)
+        public function update(Request $request, Vision $vision )
         {
+            
             $request->validate([
-                'name'              => 'required|string|max:255',
-                'description'       => 'required',
-                'vision'            => 'required',
-                'letter'            => 'required'
+                'name'              => 'nullable|string|max:255',
+                'description'       => 'nullable',
+                'vision'            => 'sometimes|required|string|max:255',
+                'letter'            => 'sometimes|required|string|max:255',
+                'address'           => 'nullable',
+                'email'             => 'nullable'
 
             ]);
     
@@ -98,7 +101,6 @@ class VisionController extends Controller
             // }
     
             $vision->update($request->all());
-    
     
             return Response::json($vision);
         }
