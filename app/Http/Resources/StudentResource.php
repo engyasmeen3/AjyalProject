@@ -24,7 +24,6 @@ class StudentResource extends JsonResource
             'en_lname' => $this->en_lname,
             'card_id' => $this->ar_mname,
             'mobile' => $this->mobile,
-            //'category_id' => $this->category_id,
             'specialization' => $this->specialization,
             'country' => $this->country,
             //'user_id' => $this->user_id,
