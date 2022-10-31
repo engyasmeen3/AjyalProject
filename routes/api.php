@@ -16,6 +16,8 @@ use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\V1\VisionController;
 use App\Http\Controllers\API\V1\GroupController;
 use App\Http\Controllers\API\V1\ContactController;
+use App\Http\Controllers\API\V1\MessageController;
+
 
 
 
@@ -45,5 +47,7 @@ Route::group([], function () {
     Route::apiResource('visions', VisionController::class);
     Route::apiResource('contacts', ContactController::class);
     Route::apiResource('groups', GroupController::class);
+    Route::apiResource('messages', MessageController::class);
+
 
 });
