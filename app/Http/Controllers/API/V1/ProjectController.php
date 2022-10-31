@@ -83,19 +83,24 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
-  
-        ]);
+        // dd($request->all());
+    //     $request->validate([
+    //         'name' => 'sometimes|required|string|max:255',
+    //         'description' => 'sometimes|nullable|string|max:255',
+
+    //     ]);
+        $project->name = $request->name;
+        $project->description = $request->description;
 
         $user = $request->user();
-        // if (!$user->tokenCan('projects.update')) {
+        // if (!$user->tokenCan('groups.update')) {
         //     abort(403, 'Not allowed');
         // }
 
-        $project->update($request->all());
-        return Response::json($project);
+        $project->save();
+
+        // return Response::json($project);
+         return Response::json('success');
     }
 
     /**
