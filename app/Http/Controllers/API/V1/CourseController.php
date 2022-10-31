@@ -93,7 +93,7 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contract $contract)
+    public function update(Request $request, Course $course)
     {
         $request->validate([
             'name'             => 'required|string|max:255',
@@ -113,9 +113,9 @@ class CourseController extends Controller
         //     abort(403, 'Not allowed');
         // }
 
-        $contract->update($request->all());
+        $course->update($request->all());
 
-        return Response::json($contract);
+        return Response::json($course);
     }
 
     /**
