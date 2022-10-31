@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Message;
+use App\Models\Student;
 use App\Http\Resources\MessageResource;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,12 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        $student = Student::where('id', $request->student_id)->exists();;
+        // dd($student);
+        if(!$student)
+        {
+            abort(404, 'الطالب الذي تحاول الوصول اليه غير موجود');
+        }
         $request->validate([
             'title' => 'required|string|max:255',
             'subject'=> 'required|string',
