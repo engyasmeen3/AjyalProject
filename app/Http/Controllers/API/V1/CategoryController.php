@@ -50,7 +50,7 @@ class CategoryController extends Controller
             'parent_id' =>'sometimes|nullable',
             //'parent_id' => 'required|exists:categories,id',
             'status' => 'in:active,inactive',
-            'is_parent' => 'in:true,false',
+            'is_parent' => 'required|boolean',
             'slug' => 'required|string|min:0',
             'image' => 'nullable',
         ]);
