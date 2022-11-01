@@ -31,7 +31,7 @@ class AttendanceController extends Controller
             // $attendance = Attendance::filter($request->query())->paginate();
             // return AttendanceResource::collection($attendance);
 
-            return CategoryResource::collection(Category::all());
+            return AttendanceResource::collection(Attendance::all());
 
         }
     

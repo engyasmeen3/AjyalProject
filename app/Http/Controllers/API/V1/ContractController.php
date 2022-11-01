@@ -76,9 +76,9 @@ class ContractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Contract $product)
+    public function show(Contract $contract)
     {
-        return new ContractResource($product);
+        return new ContractResource($contract);
 
         return $contract;
         //
