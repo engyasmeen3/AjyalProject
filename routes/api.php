@@ -48,6 +48,9 @@ Route::group([], function () {
     Route::apiResource('contacts', ContactController::class);
     Route::apiResource('groups', GroupController::class);
     Route::apiResource('messages', MessageController::class);
+    Route::get('/notifications', [UserController::class, 'index']);
+
+
 
 
 });
