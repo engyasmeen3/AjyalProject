@@ -4,7 +4,7 @@ namespace App\Http\Resources;
  
 use Illuminate\Http\Resources\Json\JsonResource;
  
-class GroupResource extends JsonResource
+class AttendanceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,6 @@ class GroupResource extends JsonResource
         return [
             'id' => $this->id,
             'date' => $this->date,
-            //'group_id' => $this->group_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
