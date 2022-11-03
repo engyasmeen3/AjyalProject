@@ -74,7 +74,7 @@ class CourseController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = microtime(true) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('images'), $fileName);
+            $file->move(public_path('https://competition.aajyal.org/api/public/images/'), $fileName);
 
             $course->image = $fileName;
         }
