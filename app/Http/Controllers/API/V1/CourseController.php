@@ -71,16 +71,20 @@ class CourseController extends Controller
             'ends_at'          => $request->ends_at,
            
         ]);
+        // if ($request->hasFile('image')) {
+        //       $image_path = $request->file('image')->store('image', 'https://competition.aajyal.org/api/public/images/');
+        //      $course->image = $image_path;
+        // }
         if ($request->hasFile('image')) {
-            $image_path = $request->file('image')->store('image', 'https://competition.aajyal.org/api/public/images/');
-        //     $file = $request->file('image');
-        //   //  $fileName = microtime(true) . '.' . $file->getClientOriginalExtension();
-        //     $fileName =$request->file('image')->getClientOriginalName();
-        //     // $file->move(public_path('images'), $fileName);
-        //     $file->move(public_path('https://competition.aajyal.org/api/public/images/'), $fileName);
+           
+            $file = $request->file('image');
+          //  $fileName = microtime(true) . '.' . $file->getClientOriginalExtension();
+            $fileName =$request->file('image')->getClientOriginalName();
+            // $file->move(public_path('images'), $fileName);
+            $file->move(public_path('https://competition.aajyal.org/api/public/images/'), $fileName);
 
-        //     $course->image = $fileName;
-        $course->image = $image_path;
+            $course->image = $fileName;
+    
         }
 
         $user = $request->user();
