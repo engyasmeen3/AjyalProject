@@ -44,7 +44,7 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
+       $validated = $request->validate([
             'name'             => 'required|string|max:255',
             'description'      => 'nullable|string|max:255',
             'trainer_id'       => 'required|exists:trainers,id',
@@ -58,13 +58,34 @@ class CourseController extends Controller
             'image'            =>  'nullable|image'
             // 'course_code'      => 'required'
         ]);
+        $course = Course::create([
+            'name'             => $request->name,
+            'description'      => $request->description,
+            'trainer_id'       => $request->trainer_id,
+            'group_id'         => $request->group_id,
+            'category_id'      => $request->category_id,
+            'status'           => $request->status,
+            'course_time'      => $request->course_time,
+            'short_description'=> $request->short_description,
+            'starts_at'        => $request->starts_at,
+            'ends_at'          => $request->ends_at,
+           
+        ]);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = microtime(true) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $fileName);
+
+            $course->image = $fileName;
+        }
 
         $user = $request->user();
         // if (!$user->tokenCan('courses.create')) {
         //     abort(403, 'Not allowed');
         // }
 
-        $course = Course::create($request->all());
+        $course->save();
+        // $course = Course::create($request->all());
 
         return Response::json($course, 201, [
             'Location' => route('courses.show', $course->id),
@@ -107,7 +128,13 @@ class CourseController extends Controller
             'starts_at'        => 'required|date',
             'ends_at'          => 'required|date'
         ]);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = microtime(true) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $fileName);
 
+            $course->image = $fileName;
+        }
         $user = $request->user();
         // if (!$user->tokenCan('courses.update')) {
         //     abort(403, 'Not allowed');
