@@ -22,7 +22,7 @@ class CategoryResource extends JsonResource
             'status' => $this->status,
             'is_parent' => $this->is_parent,
             'slug' => $this->slug,
-            'image' => $this->image,
+            'image'   => asset('images').'/'. $this->image,
         ];
     }
 }

@@ -87,6 +87,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique',
             'password' => 'required',
+            // 'email' => 'unique:users,email,' .$user->id,  ///or/// 'email' => [Rule::unique('users')->ignore($user->id, 'id')],
         ]);
 
         $user = $request->user();
