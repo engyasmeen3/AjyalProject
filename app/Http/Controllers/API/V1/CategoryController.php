@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Http\Resources\CategoryResource;
 use App\Http\Controllers\Api\AccessTokensController;
-
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -51,15 +51,33 @@ class CategoryController extends Controller
             //'parent_id' => 'required|exists:categories,id',
             'status' => 'in:active,inactive',
             'is_parent' => 'required|boolean',
-            'slug' => 'required|string|min:0',
+            'slug' => 'required|string|min:0|unique:categories',
+    
             'image' => 'nullable',
         ]);
+        $category = Category::create([
+            'name'              => $request->name,
+            'description'       => $request->description,
+            'parent_id'         => $request->parent_id,
+            'is_parent'         => $request->is_parent,
+            'slug'              => $request->slug,
+            'status'            => $request->status,     
+        ]);
+
+        if ($request->hasFile('image')) {
+           
+            $file = $request->file('image');
+            $fileName =$request->file('image')->getClientOriginalName();
+            $file->move(public_path('images'), $fileName);
+            $category->image = $fileName;
+        }
 
         $user = $request->user();
         // if (!$user->tokenCan('categories.create')) {
         //     abort(403, 'Not allowed');
         // }
-
+        $category->save();
+        
         $category = Category::create($request->all());
 
         return Response::json($category, 201, [
@@ -97,7 +115,12 @@ class CategoryController extends Controller
             'parent_id' => 'required|exists:categories,id',
             'status' => 'in:active,inactive',
             'is_parent' => 'in:true,false',
-            'slug' => 'required|string|min:0',
+            //'slug' => 'required|string|min:0',
+            'slug' => [
+                'required',
+                'string',
+                Rule::unique('categories')->ignore($category->id, 'id')
+            ],
             'image' => 'nullable',
         ]);
 
