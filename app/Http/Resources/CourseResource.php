@@ -28,8 +28,8 @@ class CourseResource extends JsonResource
             'short_description' => $this->short_description,
             'starts_at' => $this->starts_at,
             'ends_at' => $this->ends_at,
-            'image'   =>'https://competition.aajyal.org/api/public/images/' . $this->image,
-           // 'image'   =>'http://localhost:8000/api/v1/public/images/' . $this->image,
+          //  'image'   => $this->image,
+            'image'   => asset('images').'/'. $this->image,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
