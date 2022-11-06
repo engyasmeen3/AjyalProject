@@ -35,6 +35,11 @@ class ContractController extends Controller
         return ContractResource::collection(Contract::all());
 
     }
+    public function getCount(){
+        $contracts = Contract::get();
+        $contracts_count = count($contracts);
+        return  $contracts_count;
+    }
 
     /**
      * Store a newly created resource in storage.

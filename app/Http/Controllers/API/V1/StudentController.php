@@ -32,6 +32,12 @@ class StudentController extends Controller
 
     }
 
+    public function getStudentCount(){
+        $students = Student::get();
+        $students_count = count($students);
+        return  $students_count;
+    }
+
     /**
      * Store a newly created resource in storage.
      *

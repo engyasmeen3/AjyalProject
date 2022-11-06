@@ -36,11 +36,15 @@ Route::group([], function () {
     Route::post('login', [AuthController::class, 'store']);
     Route::apiResource('attendances', AttendanceController::class);
     Route::apiResource('categories', CategoryController::class);
+    
+    Route::get('contracts/contracts-count', [ContractController::class,'getCount'])->name('contracts-count');
     Route::apiResource('contracts', ContractController::class);
+    Route::get('courses-count', [CourseController::class,'getCourseCount'])->name('courses-count');
     Route::apiResource('courses', CourseController::class);
     Route::apiResource('platforms', PlatformController::class);
     Route::apiResource('posts', PostController::class);
-    Route::apiResource('projects', ProjectController::class);
+    Route::apiResource('projects', ProjectController::class); 
+    Route::get('students-count', [StudentController::class,'getStudentCount'])->name('students-count');
     Route::apiResource('students', StudentController::class);
     Route::apiResource('trainers', TrainerController::class);
     Route::apiResource('users', UserController::class);
