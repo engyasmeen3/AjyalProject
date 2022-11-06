@@ -34,6 +34,13 @@ class CourseController extends Controller
         return CourseResource::collection(Course::all());
 
     }
+    public function getCourseCount(){
+        $courses = CourseResource::collection(Course::get());;
+       // dd($courses);
+       $courses_count = count($courses);
+
+        return   $courses_count ;
+    }
 
     /**
      * Store a newly created resource in storage.

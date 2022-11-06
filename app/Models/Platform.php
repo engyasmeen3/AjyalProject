@@ -9,4 +9,8 @@ class Platform extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function contracts(){
+        return $this->hasMany(Contract::class);
+    }
 }
