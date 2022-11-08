@@ -33,7 +33,7 @@ use App\Http\Controllers\API\V1\MessageController;
 */
 
 Route::group([], function () {
-    Route::post('login', [AuthController::class, 'store']);
+    Route::post('login', [AuthController::class, 'store'])->middleware('auth:sanctum');
     Route::apiResource('attendances', AttendanceController::class);
     Route::apiResource('categories', CategoryController::class);
     

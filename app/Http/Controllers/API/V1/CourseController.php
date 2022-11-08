@@ -35,7 +35,7 @@ class CourseController extends Controller
 
     }
     public function getCourseCount(){
-        $courses = CourseResource::collection(Course::get());;
+        $courses = CourseResource::collection(Course::get());
        // dd($courses);
        $courses_count = count($courses);
 
